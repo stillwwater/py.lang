@@ -1,0 +1,20 @@
+# list of input file paths
+include:
+  - ../../Assets/Game/GUI/Localization/English.lang
+  - ../../Assets/Game/GUI/Localization/Portuguese.lang
+
+# output directory path
+output: ../../Assets/Game/GUI/Localization/Text
+
+# default tag if no other tags are defined in the document
+fallback-tag: out
+
+# define the syntax for the parser
+COMMENT: '#'
+INDENT: ' '
+NEW_LINE: '\n'
+OPEN_DEF: ':'
+END_DEF: 'end'
+OPEN_TAG: '['
+CLOSE_TAG: ']'
+SEP: '---'

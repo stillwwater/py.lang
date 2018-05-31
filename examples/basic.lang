@@ -1,0 +1,30 @@
+lang: English
+author: User
+contact: user@company.com
+
+
+# defines a tag, if a compiler is used (ie pylcsv.py) then
+# the definitions that follow this tag will be stored in inline-example.csv
+[example]
+
+greeting:
+  Hello World!
+
+# this is an inline definition
+valediction: Bye!
+
+
+[new-lines-example]
+
+# new lines in the content are ignored
+# so conten would have the value of
+# 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+text:
+  Lorem ipsum dolor sit amet,
+  consectetur adipiscing elit
+
+# leave blank lines to insert new lines in the definition's content
+title:
+  Hello
+
+  World

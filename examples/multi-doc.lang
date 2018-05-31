@@ -1,0 +1,38 @@
+#
+# This example demonstraters how to have multiple documents in one file.
+#
+# This is done using three dashes '---' to separate each document.
+# Note that the separator does not need to be used to seperate the
+# document head from the body since the body has a tag defined.
+#
+# With no tags in place:
+#
+#  lang: ...
+#  ---
+#  greeting:
+#    hi
+#  ---
+#  lang: ...
+#
+
+lang: English
+author: User
+contact: user@company.com
+
+[my-tag]
+
+greeting:
+  hi!
+
+---
+
+# new document
+
+lang: Português
+author: User
+contact: user@company.com
+
+[my-tag]
+
+greeting:
+  Oi!

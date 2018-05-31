@@ -1,0 +1,9 @@
+lang: English
+
+# defines the end of the document head
+---
+
+# no tags are defined at this point so greeting will be
+# stored in the default tag 'out'
+greeting:
+  Hello World!
