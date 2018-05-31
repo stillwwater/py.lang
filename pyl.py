@@ -13,6 +13,8 @@ output: ''
 
 fallback-tag: out
 
+output-structure: one-lang-per-file
+
 COMMENT: '#'
 INDENT: ' '
 NEW_LINE: '\n'
@@ -179,6 +181,7 @@ class PylParser:
         """prints error message and location of error then exits the program"""
         print('ERROR: %s (%s at line %d)' % (message, file_name, line_num + 1))
         print('    >%s...' % ln[:48])
+        print(self.tree)
         exit(-1)
 
     def store_rule(self, tag: str, rule: str, contents: str):
@@ -189,12 +192,24 @@ class PylParser:
         rule = rule.strip()
         contents = contents.strip()
 
-        if tag not in self.tree:
-            self.tree[tag] = {}
-
         if tag == '__head__':
+            if tag not in self.tree:
+                self.tree[tag] = {}
             self.tree[tag][rule] = contents
             return
+
+        z = tag
+
+        if self.config['output-structure'] == 'one-lang-per-file':
+            tag = self.tree['__head__']['lang']
+            tmp = rule
+            rule = z
+            z = tmp
+        elif self.config['output-structure'] == 'one-tag-per-file':
+            z = self.tree['__head__']['lang']
+
+        if tag not in self.tree:
+            self.tree[tag] = {}
 
         if rule not in self.tree[tag]:
             self.tree[tag][rule] = {}
@@ -204,7 +219,7 @@ class PylParser:
         if 'lang' not in self.tree['__head__']:
             raise KeyError()
 
-        self.tree[tag][rule][self.tree['__head__']['lang']] = contents
+        self.tree[tag][rule][z] = contents
 
     def read_all_lines(self, file_name: str):
         with open(file_name, 'r') as f:

@@ -3,8 +3,7 @@ author: User
 contact: user@company.com
 
 
-# defines a tag, if a compiler is used (ie pylcsv.py) then
-# the definitions that follow this tag will be stored in inline-example.csv
+# defines a tag
 [example]
 
 greeting:
@@ -17,7 +16,7 @@ valediction: Bye!
 [new-lines-example]
 
 # new lines in the content are ignored
-# so conten would have the value of
+# so content would have the value of
 # 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
 text:
   Lorem ipsum dolor sit amet,

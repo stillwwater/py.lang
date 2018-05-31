@@ -34,12 +34,25 @@ class PylCSV:
             for key in self.data[tag]:
                 buffer = ''
                 for lang in self.data[tag][key]:
+                    if self.isinverted():
+                        print('[%s] buffering "%s" (%s)' % (tag, lang, key))
+                        buffer += lang + ',' + self.data[tag][key][lang] + '\n'
+                        continue
                     print('[%s] buffering "%s" (%s)' % (tag, key, lang))
                     buffer += self.data[tag][key][lang] + ','
+                if self.isinverted():
+                    f.write('%s\n' % buffer[:-1])
+                    continue
                 f.write('%s,%s\n' % (key, buffer[:-1]))
+
+    def isinverted(self):
+        return self.data['__config__']['output-structure'] == 'one-lang-per-file'
 
     def get_head(self):
         head = 'Key,'
+
+        if self.isinverted():
+            return head + 'Value\n'
 
         if (isinstance(self.data['__head__']['lang'], list)):
             head += ','.join(self.data['__head__']['lang'])

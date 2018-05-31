@@ -1,13 +1,25 @@
 # list of input file paths
 include:
-  - ../../Assets/Game/GUI/Localization/English.lang
-  - ../../Assets/Game/GUI/Localization/Portuguese.lang
+  - ./path/to/input/file0.lang
+  - ./path/to/input/file1.lang
 
 # output directory path
-output: ../../Assets/Game/GUI/Localization/Text
+output: ./out
 
 # default tag if no other tags are defined in the document
 fallback-tag: out
+
+# changes the output structure of the parser
+# options:
+#
+# 'one-lang-per-file' (default):
+# each language in the project gets compiled to its own file
+# ex. language.json->tag->key->value
+#
+# 'one-tag-per-file':
+# each tag in the project gets compiled to its own file
+# ex. tag.json->language->key->value
+output-structure: one-lang-per-file
 
 # define the syntax for the parser
 COMMENT: '#'

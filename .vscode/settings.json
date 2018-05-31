@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.lang": "yaml"
+    },
+    "python.linting.pep8Enabled": true,
+    "python.linting.pep8Args": [
+        "--ignore=E501,E731"
+    ]
+}
